@@ -112,7 +112,7 @@ export default function Welcome({ projects, experiences }) {
                     {/* Nombre */}
                     <div className="text-center hidden md:block">
                         {/*<h3 className="text-white font-black uppercase tracking-wider text-sm">Ricardo</h3>*/}
-                        <p className="text-[10px] text-indigo-400 font-bold tracking-widest mt-1">DEVELOPER</p>
+                        <p className="text-[10px] text-indigo-400 font-bold tracking-widest mt-1">WEB DEVELOPER</p>
                     </div>
                 </div>
                 
