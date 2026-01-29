@@ -17,6 +17,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      # --- INICIO DEL BLOQUE A AGREGAR ---
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Puedes cambiarlo a '20' si usas una versión muy reciente
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+      # --- FIN DEL BLOQUE A AGREGAR ---
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
