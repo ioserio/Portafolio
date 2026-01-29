@@ -55,4 +55,7 @@ jobs:
 
       # --- 5. EJECUCIÓN DE TESTS ---
       - name: Tests
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: :memory:
         run: ./vendor/bin/phpunit
