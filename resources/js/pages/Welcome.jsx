@@ -5,13 +5,13 @@ import Typewriter from 'typewriter-effect';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function Welcome({ projects, experiences }) {
+export default function Welcome({ projects, experiences, props }) {
     
     const title = "Ricardo Merino,";
     // --- ESTADOS PARA EL CARRUSEL ---
     const [selectedProject, setSelectedProject] = useState(null); // Qué proyecto se abrió
     const [currentImageIndex, setCurrentImageIndex] = useState(0); // Qué foto ver (0 a 4)
-
+    const [modalAbierto, setModalAbierto] = useState(false); // SI FOTO ESTA ABIERA O CERRADA
     // --- TUS DATOS DE PROYECTOS ---
     const projectsData = [
         {
@@ -105,8 +105,9 @@ export default function Welcome({ projects, experiences }) {
                             <img 
                             src="/img/ricardo.png" 
                             alt="Foto de Ricardo" 
-                            className="w-full h-full rounded-full object-cover"
+                            className="w-full h-full rounded-full object-cover mx-auto cursor-pointer hover:opacity-80 transition-opacity" // <--- Agrega cursor-pointer y hover
                             onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=Ricardo+Merino&background=6366f1&color=fff"; }}
+                            onClick={() => setModalAbierto(true)} // <--- ¡ESTO ABRE EL MODAL!
                         />
                     </div>
                     {/* Nombre */}
@@ -690,6 +691,32 @@ export default function Welcome({ projects, experiences }) {
                     </motion.div>
                 )}
             </AnimatePresence>
+        {/* --- INICIO DEL MODAL --- */}
+        {modalAbierto && (
+            <div
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+                onClick={() => setModalAbierto(false)} // Cierra al hacer clic en el fondo negro
+            >
+                <div className="relative max-w-4xl w-full flex justify-center">
+                    {/* Botón de cerrar (X) */}
+                    <button
+                        className="absolute -top-12 right-0 text-white text-4xl hover:text-gray-300 font-bold"
+                        onClick={() => setModalAbierto(false)}
+                    >
+                        &times;
+                    </button>
+
+                    {/* La Foto Grande */}
+                    <img
+                        src="/img/ricardo.png" // <--- ¡PON LA MISMA RUTA DE TU FOTO AQUÍ!
+                        alt="Foto Grande"
+                        className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                        onClick={(e) => e.stopPropagation()} // Evita que se cierre si tocas la foto
+                    />
+                </div>
+            </div>
+        )}
+        {/* --- FIN DEL MODAL --- */}
         </div>
     );
 }
