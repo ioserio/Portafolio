@@ -207,8 +207,8 @@ export default function Welcome({ projects, experiences, props }) {
                     <p className="mt-8 text-gray-500 text-lg uppercase tracking-widest leading-relaxed max-w-2xl">
                         Especializado en <span className="text-white">Desarrollo Web Moderno</span>. 
                         <br className="hidden md:block" />
-                        Con sólido background en aplicaciones móviles <span className="text-white">Android</span> 
-                        y arquitectura de sistemas <span className="text-white">ERP en Java</span>.
+                        Con experiencia en aplicaciones móviles <span className="text-white">Android </span> 
+                         y arquitectura de sistemas <span className="text-white">con Java</span>.
                     </p>
                 </motion.section>
 
